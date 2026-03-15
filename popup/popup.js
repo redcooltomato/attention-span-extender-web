@@ -7,10 +7,14 @@ function loadList() {
         for (const key in items) {
             if (items.hasOwnProperty(key)) {
                 list.insertAdjacentHTML("beforeend",
-                    `<div data-key="${key}">${key}<button class="kill-button" onclick="buttonKillMyself(this)">kill me</button></div>`
+                    `<div data-key="${key}">${key}<button class="kill-button">Remove</button></div>`
                 )
             }
         }
+        
+        document.querySelectorAll(".kill-button").forEach(button => {
+            button.addEventListener('click', buttonKillMyself);
+        });
     })
 }
 
@@ -26,8 +30,12 @@ document.getElementById("add-website-button").addEventListener("click", (e) => {
     document.getElementById("website-input-box").value = ""
 })
 
-function buttonKillMyself(el) {
+function buttonKillMyself(e) {
+    const parent = e.currentTarget.parentNode
     
+    browser.storage.local.remove(parent.dataset.key).then(() => {
+        loadList()
+    })
 }
 
 document.addEventListener('DOMContentLoaded', loadList)
