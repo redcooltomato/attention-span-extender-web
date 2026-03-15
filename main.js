@@ -1,6 +1,6 @@
-let variable = localStorage.getItem("variable") || "";
-let input = prompt(variable, variable);
+console.log(window.location.hostname.split('.').slice(-2).join('.'))
 
-if (input !== null) {
-    localStorage.setItem("variable", input);
+
+if (localStorage.getItem(window.location.hostname.split('.').slice(-2).join('.'))) {
+    document.body.style.display = "None"
 }

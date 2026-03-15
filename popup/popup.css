@@ -1,0 +1,52 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body {
+    min-width: 180px;
+
+    max-width: 100%;
+    overflow-x: hidden;
+
+    padding-left: 5px;
+    padding-right: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+
+    background-color: #18191B;
+    color: #EBFFFF;
+}
+
+.website-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    padding-right: 0px;
+
+    border-style: solid;
+    border-color: #EBFFFF;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+.website-input-box {
+    width: 70%;
+}
+
+.add-website-button {
+    min-width: 15%;
+}
+
+.input-and-confirm-button {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.kill-button {
+    margin: 3px;
+}
