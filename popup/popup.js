@@ -1,13 +1,13 @@
 function loadList() {
     let list = document.getElementById("website-list")
 
-    list.innerHTML = `<p>Current list</p>`
+    list.innerHTML = ""
 
     browser.storage.local.get().then(items => {
         for (const key in items) {
             if (items.hasOwnProperty(key)) {
                 list.insertAdjacentHTML("beforeend",
-                    `<div data-key="${key}">${key}<button class="kill-button">Remove</button></div>`
+                    `<div data-key="${key}">${key}<button class="kill-button">X</button></div>`
                 )
             }
         }
@@ -18,17 +18,26 @@ function loadList() {
     })
 }
 
-document.getElementById("add-website-button").addEventListener("click", (e) => {
-    const input = document.getElementById("website-input-box").value
 
+function addToFilter(input) {
     if (input) {
         browser.storage.local.set({[input]: true}).then(() => {
             loadList()
         })
+    } else {
+        alert(input)
     }
+}
+
+
+document.getElementById("add-website-button").addEventListener("click", (e) => {
+    const input = document.getElementById("website-input-box").value
+
+    addToFilter(input)
 
     document.getElementById("website-input-box").value = ""
 })
+
 
 function buttonKillMyself(e) {
     const parent = e.currentTarget.parentNode
@@ -37,5 +46,30 @@ function buttonKillMyself(e) {
         loadList()
     })
 }
+
+
+function getActiveTabHostname() {
+    return browser.tabs.query({active: true, currentWindow: true}).then((tabs) => {
+        let current = tabs[0]
+
+        if (current.url) {
+            try {
+                let url = new URL(current.url)
+                return url.hostname.split('.').slice(-2).join('.')
+            } catch (e) {
+                return "err"
+        }
+        }
+        return ""
+    })
+}
+
+
+document.getElementById("add-current-website-button").addEventListener("click", () => {
+    getActiveTabHostname().then((resp) => {
+        addToFilter(resp)
+    })
+})
+
 
 document.addEventListener('DOMContentLoaded', loadList)

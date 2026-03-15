@@ -4,7 +4,7 @@
 }
 
 html, body {
-    min-width: 240px;
+    min-width: 240px;   width:500px;
 
     max-width: 100%;
     overflow-x: hidden;
@@ -22,6 +22,7 @@ html, body {
     display: flex;
     flex-direction: column;
     gap: 5px;
+
     padding: 5px;
     padding-right: 0px;
 
@@ -43,10 +44,38 @@ html, body {
     display: flex;
     flex-direction: row;
     gap: 5%;
+
     margin-top: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 3px;
 }
 
 .kill-button {
     margin: 3px;
+    border-radius: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+
+    background-color: inherit;
+    color: rgb(196, 19, 19);
+}
+
+#add-current-website-button {
+    margin-bottom: 15px;
+    width: 100%;
+
+    font-size: small;
+    color: #c1ffff;
+    text-align: center;
+    cursor: pointer;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#website-list-title {
+    margin-bottom: 4px;
 }
