@@ -1,4 +1,6 @@
-console.log(window.location.hostname.split('.').slice(-2).join('.'))
+const domain = window.location.hostname.split('.').slice(-2).join('.')
+
+console.log(domain)
 
 browser.storage.local.get(domain).then(result => {
     console.log(domain)
@@ -8,6 +10,4 @@ browser.storage.local.get(domain).then(result => {
         console.log("slay");
         document.body.style.display = "none"
     }
-}).catch(error => {
-    console.error("err accessing storage,", error)
-});
+})
