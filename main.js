@@ -7,6 +7,7 @@ browser.storage.local.get(domain).then(result => {
     console.log(result[domain])
     
     if (result[domain] === true) {
+        document.head.style.display = "none"
         document.body.style.display = "none"
     }
 })
