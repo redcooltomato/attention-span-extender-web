@@ -24,8 +24,6 @@ function addToFilter(input) {
         browser.storage.local.set({[input]: true}).then(() => {
             loadList()
         })
-    } else {
-        alert(input)
     }
 }
 
@@ -57,7 +55,7 @@ function getActiveTabHostname() {
                 let url = new URL(current.url)
                 return url.hostname.split('.').slice(-2).join('.')
             } catch (e) {
-                return "err"
+                return ""
         }
         }
         return ""
