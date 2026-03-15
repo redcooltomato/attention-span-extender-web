@@ -18,7 +18,7 @@ html, body {
     color: #EBFFFF;
 }
 
-.website-list {
+#website-list {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -31,15 +31,15 @@ html, body {
     border-radius: 4px;
 }
 
-.website-input-box {
+#website-input-box {
     width: 70%;
 }
 
-.add-website-button {
+#add-website-button {
     min-width: 15%;
 }
 
-.input-and-confirm-button {
+#input-and-confirm-button {
     display: flex;
     flex-direction: row;
     gap: 5%;
