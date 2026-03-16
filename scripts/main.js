@@ -5,8 +5,15 @@ console.log(domain)
 browser.storage.local.get(domain).then(result => {
     
     if (result[domain] === true) {
-        document.head.style.display = "none"
-        document.body.style.display = "none"
+        document.head.innerHTML = `
+            <title>Swoon</title>
+            <style>
+                html {background-color: black;}
+            </style>
+        `
+        document.body.innerHTML = `
+
+        `
     }
     
 })
