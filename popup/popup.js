@@ -1,3 +1,6 @@
+import { getActiveTab, getDomainFromTab } from "../scripts/utils.js"
+
+
 function loadList() {
     let list = document.getElementById("website-list")
 
@@ -25,6 +28,12 @@ function addToFilter(input) {
             loadList()
         })
     }
+
+    getActiveTab().then((res) => {
+        if (getDomainFromTab(res) == input) {
+            browser.tabs.reload(res.id)
+        }
+    })
 }
 
 
@@ -46,28 +55,9 @@ function buttonKillMyself(e) {
 }
 
 
-function getActiveWindow() {
-    return browser.tabs.query({active: true, currentWindow: true}).then((tabs) => {
-        let current = tabs[0]
-        return current
-    })
-}
-
-
 document.getElementById("add-current-website-button").addEventListener("click", () => {
-    getActiveWindow().then((resp) => {
-        let dom = ""
-
-        if (resp.url) {
-            try {
-                let url = new URL(resp.url)
-                dom = url.hostname.split('.').slice(-2).join('.')
-            } catch (e) {
-                dom = ""
-            }
-        }
-        
-        addToFilter(dom)
+    getActiveTab().then((resp) => {
+        addToFilter(getDomainFromTab(resp))
     })
 })
 
