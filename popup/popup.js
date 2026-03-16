@@ -46,26 +46,28 @@ function buttonKillMyself(e) {
 }
 
 
-function getActiveTabHostname() {
+function getActiveWindow() {
     return browser.tabs.query({active: true, currentWindow: true}).then((tabs) => {
         let current = tabs[0]
-
-        if (current.url) {
-            try {
-                let url = new URL(current.url)
-                return url.hostname.split('.').slice(-2).join('.')
-            } catch (e) {
-                return ""
-        }
-        }
-        return ""
+        return current
     })
 }
 
 
 document.getElementById("add-current-website-button").addEventListener("click", () => {
-    getActiveTabHostname().then((resp) => {
-        addToFilter(resp)
+    getActiveWindow().then((resp) => {
+        let dom = ""
+
+        if (resp.url) {
+            try {
+                let url = new URL(resp.url)
+                dom = url.hostname.split('.').slice(-2).join('.')
+            } catch (e) {
+                dom = ""
+            }
+        }
+        
+        addToFilter(dom)
     })
 })
 
