@@ -1,4 +1,4 @@
-import { getActiveTab, getDomainFromTab } from "../scripts/utils.js"
+import { getActiveTab, getDomainFromTab, reloadActiveTabIfMatched } from "../scripts/utils.js"
 
 
 function loadList() {
@@ -29,11 +29,7 @@ function addToFilter(input) {
         })
     }
 
-    getActiveTab().then((res) => {
-        if (getDomainFromTab(res) == input) {
-            browser.tabs.reload(res.id)
-        }
-    })
+    reloadActiveTabIfMatched(input)
 }
 
 
@@ -48,9 +44,12 @@ document.getElementById("add-website-button").addEventListener("click", (e) => {
 
 function buttonKillMyself(e) {
     const parent = e.currentTarget.parentNode
+    let dom = parent.dataset.key
     
-    browser.storage.local.remove(parent.dataset.key).then(() => {
+    browser.storage.local.remove(dom).then(() => {
         loadList()
+
+        reloadActiveTabIfMatched(dom)
     })
 }
 

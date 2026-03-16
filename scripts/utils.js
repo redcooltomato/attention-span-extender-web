@@ -6,7 +6,7 @@ export function getActiveTab() {
 
 
 export function getDomainFromTab(tab) {
-    dom = ""
+    let dom = ""
     if (tab.url) {
         try {
             let url = new URL(tab.url)
@@ -16,4 +16,12 @@ export function getDomainFromTab(tab) {
         }
     }
     return dom
+}
+
+export function reloadActiveTabIfMatched(name) {
+    getActiveTab().then((res) => {
+        if (getDomainFromTab(res) == name) {
+            browser.tabs.reload(res.id)
+        }
+    })
 }
