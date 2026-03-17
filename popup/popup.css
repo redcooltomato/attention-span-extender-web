@@ -18,18 +18,14 @@ html, body {
     color: #EBFFFF;
 }
 
-#website-list {
+#input-and-confirm-button {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    flex-direction: row;
+    gap: 2%;
 
-    padding: 5px;
-    padding-right: 0px;
-
-    border-style: solid;
-    border-color: #EBFFFF;
-    border-width: 1px;
-    border-radius: 4px;
+    padding-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 3px;
 }
 
 #website-input-box {
@@ -37,26 +33,12 @@ html, body {
 }
 
 #add-website-button {
-    min-width: 15%;
-}
+    min-width: 20%;
 
-#input-and-confirm-button {
-    display: flex;
-    flex-direction: row;
-    gap: 5%;
+    background-color: #FFFFFF;
 
-    margin-top: 5px;
-    margin-bottom: 3px;
-}
-
-.kill-button {
-    margin: 3px;
-    border-radius: 0px;
-    padding-left: 1px;
-    padding-right: 1px;
-
-    background-color: inherit;
-    color: rgb(196, 19, 19);
+    border-radius: 3px;
+    border-color: #18191B;
 }
 
 #add-current-website-button {
@@ -76,6 +58,30 @@ html, body {
     user-select: none;
 }
 
+#website-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    padding: 5px;
+    padding-right: 0px;
+
+    border-style: solid;
+    border-color: #EBFFFF;
+    border-width: 1px;
+    border-radius: 4px;
+}
+
 #website-list-title {
     margin-bottom: 4px;
+}
+
+.kill-button {
+    margin: 3px;
+    border-radius: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+
+    background-color: inherit;
+    color: rgb(196, 19, 19);
 }

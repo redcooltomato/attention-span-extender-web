@@ -20,7 +20,7 @@ function loadList() {
         }
 
         if (isEmpty) {
-            list.innerHTML = "<i>There is nothing here</i>"
+            list.innerHTML = `<i style="font-size: 14px;">There is nothing here</i>`
         }
         
         document.querySelectorAll(".kill-button").forEach(button => {
