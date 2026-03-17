@@ -1,12 +1,12 @@
 {
     "manifest_version": 2,
-    "name": "Attention span expander",
-    "version": "0.1",
+    "name": "Swoon",
+    "version": "0.2",
 
-    "description": "Forces you to solve equations, problems or tasks to open websites of specified list",
+    "description": "Attempts at fixing your attention span by swooning (blocking) domains of your choosing",
 
     "icons": {
-        "48": "icons/icon48.png"
+        "48": "assets/icon48.png"
     },
 
     "permissions": [

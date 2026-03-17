@@ -7,12 +7,20 @@ function loadList() {
     list.innerHTML = ""
 
     browser.storage.local.get().then(items => {
+        let isEmpty = true
+
         for (const key in items) {
             if (items.hasOwnProperty(key)) {
                 list.insertAdjacentHTML("beforeend",
                     `<div data-key="${key}">${key}<button class="kill-button">X</button></div>`
                 )
+
+                isEmpty = false
             }
+        }
+
+        if (isEmpty) {
+            list.innerHTML = "<i>There is nothing here</i>"
         }
         
         document.querySelectorAll(".kill-button").forEach(button => {

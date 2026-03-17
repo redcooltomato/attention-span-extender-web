@@ -1,7 +1,5 @@
 const domain = window.location.hostname.split('.').slice(-2).join('.')
 
-console.log(domain)
-
 browser.storage.local.get(domain).then(result => {
     
     if (result[domain] === true) {
