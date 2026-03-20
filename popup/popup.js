@@ -6,7 +6,13 @@ function loadList() {
 
     list.innerHTML = ""
 
-    browser.storage.local.get().then(items => {
+    browser.storage.local.get("block-list").then(result => {
+        let items = result["block-list"]
+
+        if (!items) {
+            items = {}
+        }
+
         let isEmpty = true
 
         for (const key in items) {
@@ -32,14 +38,39 @@ function loadList() {
 
 function addToFilter(input) {
     if (input) {
-        browser.storage.local.set({[input]: true}).then(() => {
-            loadList()
+        browser.storage.local.get("block-list").then(result => {
+            let list = result["block-list"]
+
+            if (!list) {
+                list = {}
+            }
+
+            list[input] = true
+
+            browser.storage.local.set({"block-list": list}).then(() => {
+                loadList()
+            })
         })
     }
 
     reloadActiveTabIfMatched(input)
 }
 
+function removeFromFilter(input) {
+    if (input) {
+        browser.storage.local.get("block-list").then(result => {
+            let list = result["block-list"]
+
+            delete list[input]
+
+            browser.storage.local.set({"block-list": list}).then(() => {
+                loadList()
+            })
+        })
+    }
+ 
+    reloadActiveTabIfMatched(input)
+}
 
 document.getElementById("add-website-button").addEventListener("click", (e) => {
     const input = document.getElementById("website-input-box").value
@@ -54,11 +85,7 @@ function buttonKillMyself(e) {
     const parent = e.currentTarget.parentNode
     let dom = parent.dataset.key
     
-    browser.storage.local.remove(dom).then(() => {
-        loadList()
-
-        reloadActiveTabIfMatched(dom)
-    })
+    removeFromFilter(dom)
 }
 
 
