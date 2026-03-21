@@ -1,7 +1,10 @@
-# Swoon (WIP)
+# Swoon
 
 This (currently firefox) extention attempts at fixing your attention span by swooning domains from the list of your choosing
 
+# Reasons to exist
+
+Despite the fact that it may appear obsolete to some, the plugi helps with almost reflectory opening of social media/youtube/etc, snapping you back to sanity by showing black screen instead of flashy images and videos
 
 ## Plans
 - [x] Basic usage (disabling selected domains)
@@ -12,5 +15,4 @@ This (currently firefox) extention attempts at fixing your attention span by swo
 - [ ] Custom block screens?
 - [ ] Chrome support
 - [ ] Publish on chrome(ish) addon store(s)
-- [ ] Option to unlock domains by solving tasks/problems (math?)
 
