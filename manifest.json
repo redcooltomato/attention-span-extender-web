@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Swoon",
-    "version": "0.2",
+    "version": "1.0",
 
     "description": "Attempts at fixing your attention span by swooning (turning to black pages) domains of your choosing",
 
@@ -17,7 +17,6 @@
 
     "browser_specific_settings": {
     "gecko": {
-      "id": "@extension-without-data-collection",
       "data_collection_permissions": {
         "required": ["none"]
       }
