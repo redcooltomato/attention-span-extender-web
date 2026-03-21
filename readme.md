@@ -1,10 +1,12 @@
 # Swoon
 
-This (currently firefox) extention attempts at fixing your attention span by swooning domains from the list of your choosing
+This (currently firefox) extention attempts at fixing your attention span by *swooning* domains from the list of your choosing
+
+Kinda WIP as of now
 
 # Reasons to exist
 
-Despite the fact that it may appear obsolete to some, the plugi helps with almost reflectory opening of social media/youtube/etc, snapping you back to sanity by showing black screen instead of flashy images and videos
+Despite the fact that it may appear obsolete to some, the plugin helps with almost reflectory opening of social media/youtube/etc, snapping you back to sanity by showing black webpage instead of flashy images and loud videos
 
 ## Plans
 - [x] Basic usage (disabling selected domains)

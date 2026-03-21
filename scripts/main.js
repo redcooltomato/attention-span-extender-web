@@ -9,6 +9,7 @@ browser.storage.local.get("block-list").then(result => {
     }
 
     if (domain in list) {
+        // prob really bad idea, if you are reading this, write an issue or smth if you know how to do this better way
         document.head.innerHTML = `
             <title>Swoon</title>
             <link rel="icon" type="image/x-icon" href="${browser.runtime.getURL("assets/icon48.png")}">
