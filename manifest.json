@@ -15,6 +15,15 @@
         "activeTab"
     ],
 
+    "browser_specific_settings": {
+    "gecko": {
+      "id": "@extension-without-data-collection",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+
     "browser_action": {
         "default_title": "Swoon",
         "default_popup": "popup/popup.html"
