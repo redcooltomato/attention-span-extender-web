@@ -13,7 +13,7 @@ Despite the fact that it may appear obsolete to some, the plugin helps with almo
 - [ ] Better page blocking
 - [ ] Allow blocking specific pages instead of just domains
 - [ ] Password system?
-- [ ] Publish on firefox addon store
+- [x] Publish on firefox addon store (24.03.26)
 - [ ] Custom block screens?
 - [ ] Chrome support
 - [ ] Publish on chrome(ish) addon store(s)
