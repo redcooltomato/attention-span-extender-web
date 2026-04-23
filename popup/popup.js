@@ -1,5 +1,11 @@
 import { getActiveTab, getDomainFromTab, reloadActiveTabIfMatched } from "../scripts/utils.js"
 
+function buttonKillMyself(e) {
+    const parent = e.currentTarget.parentNode
+    let dom = parent.dataset.key
+    
+    removeFromFilter(dom)
+}
 
 function loadList() {
     let list = document.getElementById("website-list")
@@ -35,6 +41,13 @@ function loadList() {
     })
 }
 
+function addFromInput() {
+    const input = document.getElementById("website-input-box").value
+
+    addToFilter(input)
+
+    document.getElementById("website-input-box").value = ""
+}
 
 function addToFilter(input) {
     if (input) {
@@ -56,14 +69,6 @@ function addToFilter(input) {
     reloadActiveTabIfMatched(input)
 }
 
-function addFromInput() {
-    const input = document.getElementById("website-input-box").value
-
-    addToFilter(input)
-
-    document.getElementById("website-input-box").value = ""
-}
-
 function removeFromFilter(input) {
     if (input) {
         browser.storage.local.get("block-list").then(result => {
@@ -80,31 +85,25 @@ function removeFromFilter(input) {
     reloadActiveTabIfMatched(input)
 }
 
-document.getElementById("add-website-button").addEventListener("click", (e) => {
-    addFromInput()
-})
 
 
-function buttonKillMyself(e) {
-    const parent = e.currentTarget.parentNode
-    let dom = parent.dataset.key
+document.addEventListener('DOMContentLoaded', () => {
+    loadList()
     
-    removeFromFilter(dom)
-}
+    document.onkeydown = function (e) {
+        if (!e) { return }
+        if (e.key == "Enter") {
+            addFromInput()
+        }
+    }
+    
+    document.getElementById("add-current-website-button").addEventListener("click", () => {
+        getActiveTab().then((resp) => {
+            addToFilter(getDomainFromTab(resp))
+        })
+    })
 
-
-document.getElementById("add-current-website-button").addEventListener("click", () => {
-    getActiveTab().then((resp) => {
-        addToFilter(getDomainFromTab(resp))
+    document.getElementById("add-website-button").addEventListener("click", (e) => {
+        addFromInput()
     })
 })
-
-
-document.addEventListener('DOMContentLoaded', loadList)
-
-document.onkeydown = function (e) {
-    if (!e) { return }
-    if (e.key == "Enter") {
-        addFromInput()
-    }
-}

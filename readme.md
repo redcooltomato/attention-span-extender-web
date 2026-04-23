@@ -6,12 +6,12 @@ Kinda WIP as of now
 
 # Reasons to exist
 
-Despite the fact that it may appear obsolete to some, the plugin helps with almost reflectory opening of social media/youtube/etc, snapping you back to sanity by showing a black webpage instead of flashy images and loud videos
+Despite the abudance of similiar plugins, I made this one to be as minimalistic as possible
 
 ## Plans
 - [x] Basic usage (disabling selected domains)
 - [ ] Better page blocking
-- [ ] Allow blocking specific pages instead of just domains
+- [ ] Allow blocking specific pages (paths) instead of just domains
 - [ ] Password system?
 - [x] Publish on firefox addon store (24.03.26)
 - [ ] Custom block screens?

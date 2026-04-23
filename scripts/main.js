@@ -1,4 +1,5 @@
 const domain = window.location.hostname.split('.').slice(-2).join('.')
+const path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1)
 
 function blockout() {
     browser.storage.local.get("block-list").then(result => {
@@ -21,9 +22,27 @@ function blockout() {
         document.body.innerHTML = `
 
         `
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((newNode) => {
+                    mutation.target.removeChild(newNode)
+                })
+            })
+        })
+
+        observer.observe(document.body, {
+            subtree: true,
+            childList: true
+        })
     }
-        
+
     })
 }
 
+
+
 blockout()
+document.onreadystatechange = () => {
+    blockout()
+}
