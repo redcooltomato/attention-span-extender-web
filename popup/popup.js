@@ -56,6 +56,14 @@ function addToFilter(input) {
     reloadActiveTabIfMatched(input)
 }
 
+function addFromInput() {
+    const input = document.getElementById("website-input-box").value
+
+    addToFilter(input)
+
+    document.getElementById("website-input-box").value = ""
+}
+
 function removeFromFilter(input) {
     if (input) {
         browser.storage.local.get("block-list").then(result => {
@@ -73,11 +81,7 @@ function removeFromFilter(input) {
 }
 
 document.getElementById("add-website-button").addEventListener("click", (e) => {
-    const input = document.getElementById("website-input-box").value
-
-    addToFilter(input)
-
-    document.getElementById("website-input-box").value = ""
+    addFromInput()
 })
 
 
@@ -97,3 +101,10 @@ document.getElementById("add-current-website-button").addEventListener("click", 
 
 
 document.addEventListener('DOMContentLoaded', loadList)
+
+document.onkeydown = function (e) {
+    if (!e) { return }
+    if (e.key == "Enter") {
+        addFromInput()
+    }
+}
