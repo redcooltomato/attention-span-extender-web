@@ -1,6 +1,10 @@
 const domain = window.location.hostname.split('.').slice(-2).join('.')
 const path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1)
 
+function sleep(ms) { // i have to duplicate this for some reason
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 function blockout() {
     browser.storage.local.get("block-list").then(result => {
     
@@ -43,6 +47,6 @@ function blockout() {
 
 
 blockout()
-document.onreadystatechange = () => {
+sleep(5).then(() => { // to prevent some stuff
     blockout()
-}
+})
