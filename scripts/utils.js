@@ -1,4 +1,4 @@
-export function getActiveTab() {
+export function getActiveTab() { // irreplaceble by browser.tabs.getActive() as it doesnt work for some reason
     return browser.tabs.query({active: true, currentWindow: true}).then((tabs) => {
         return tabs[0]
     })
