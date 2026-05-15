@@ -18,14 +18,6 @@ export function getDomainFromTab(tab) {
     return dom
 }
 
-export function reloadActiveTabIfMatched(name) {
-    getActiveTab().then((res) => {
-        if (getDomainFromTab(res) == name) {
-            browser.tabs.reload(res.id)
-        }
-    })
-}
-
 export function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }

@@ -2,12 +2,14 @@ const domain = window.location.hostname.split('.').slice(-2).join('.')
 const path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1)
 
 const block_css = `
+    visibility: hidden;
+
     width: 100%;
     height: 100%;
     background-color: black;
     
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
     
     z-index: 999999;
@@ -30,15 +32,25 @@ function blockout() {
     }
 
     if (domain in list) {
-        block = document.createElement("div")
-        block.style.cssText = block_css
-        block.innerHTML = "Swoon"
-        document.body.appendChild(block)
+        if (!block) {
+            block = document.createElement("div")
+            block.style.cssText = block_css
+            block.innerHTML = "Swoon"
+            document.body.appendChild(block)
+        }
+        block.style.visibility = "visible"
+    } else {
+        if (block) {
+            block.style.visibility = "hidden"
+        }
     }
 
     })
 }
 
 
-
 blockout()
+
+browser.runtime.onMessage.addListener((msg, sender) => {
+    blockout()
+})

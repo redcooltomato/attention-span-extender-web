@@ -10,7 +10,7 @@ Despite the abudance of similiar plugins, I made this one to be as minimalistic 
 
 ## Plans
 - [x] Basic usage (disabling selected domains)
-- [ ] Better page blocking
+- [x] Better page blocking
 - [ ] Allow blocking specific pages (paths) instead of just domains
 - [ ] Password system?
 - [x] Publish on firefox addon store (24.03.26)

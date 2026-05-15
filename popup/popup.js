@@ -1,4 +1,4 @@
-import { getActiveTab, getDomainFromTab, reloadActiveTabIfMatched } from "../scripts/utils.js"
+import { getActiveTab, getDomainFromTab } from "../scripts/utils.js"
 
 function buttonKillMyself(e) {
     const parent = e.currentTarget.parentNode
@@ -66,7 +66,14 @@ function addToFilter(input) {
         })
     }
 
-    reloadActiveTabIfMatched(input)
+    browser.tabs.query({}).then((tabs) => {
+        for (const tab of tabs) {
+            if (!tab || !tab.id) {
+                continue
+            }
+            browser.tabs.sendMessage(tab.id, input)
+        }
+    })
 }
 
 function removeFromFilter(input) {
@@ -82,7 +89,14 @@ function removeFromFilter(input) {
         })
     }
  
-    reloadActiveTabIfMatched(input)
+    browser.tabs.query({}).then((tabs) => {
+        for (const tab of tabs) {
+            if (!tab || !tab.id) {
+                continue
+            }
+            browser.tabs.sendMessage(tab.id, input)
+        }
+    })
 }
 
 
