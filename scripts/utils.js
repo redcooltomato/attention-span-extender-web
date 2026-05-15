@@ -4,6 +4,18 @@ export function getActiveTab() { // irreplaceble by browser.tabs.getActive() as 
     })
 }
 
+export function sendToAllTabs(msg) {
+    browser.tabs.query({}).then((tabs) => {
+        for (const tab of tabs) {
+            if (!tab || !tab.id) {
+                continue
+            }
+            browser.tabs.sendMessage(tab.id, msg).catch(() => {
+                // don't do anything 
+            })
+        }
+    })
+}
 
 export function getDomainFromTab(tab) {
     let dom = ""
