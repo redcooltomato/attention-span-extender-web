@@ -35,7 +35,6 @@ function blockout() {
         if (!block) {
             block = document.createElement("div")
             block.style.cssText = block_css
-            block.innerHTML = "Swoon"
             document.body.appendChild(block)
         }
         block.style.visibility = "visible"
@@ -43,6 +42,18 @@ function blockout() {
         if (block) {
             block.style.visibility = "hidden"
         }
+    }
+    
+    if (block) {
+        block.innerHTML = ""
+        browser.storage.local.get("block-text").then(result => {
+            if (result["block-list"]) {
+                block.innerHTML = result["block-list"]
+            } else {
+                browser.storage.local.set({"block-text": "Swoon"})
+                block.innerHTML = "Swoon"
+            }
+        })
     }
 
     })
