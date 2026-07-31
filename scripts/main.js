@@ -1,5 +1,5 @@
 const domain = window.location.hostname.split('.').slice(-2).join('.')
-const path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1)
+const path = domain + window.location.pathname
 
 const block_css = `
     visibility: hidden;
@@ -28,10 +28,10 @@ function blockout() {
     
     let list = result["block-list"]
     if (!list) {
-        list = {}
+        list = []
     }
 
-    if (domain in list) {
+    if (list.filter(addr => path.startsWith(addr)).length > 0) {
         if (!block) {
             block = document.createElement("div")
             block.style.cssText = block_css

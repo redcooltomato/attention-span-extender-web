@@ -8,31 +8,29 @@ function buttonKillMyself(e) {
 }
 
 function loadList() {
-    let list = document.getElementById("website-list")
+    let weblist = document.getElementById("website-list")
 
-    list.innerHTML = ""
+    weblist.innerHTML = ""
 
     browser.storage.local.get("block-list").then(result => {
-        let items = result["block-list"]
+        let list = result["block-list"]
 
-        if (!items) {
-            items = {}
+        if (!list) {
+            list = []
         }
 
         let isEmpty = true
 
-        for (const key in items) {
-            if (items.hasOwnProperty(key)) {
-                list.insertAdjacentHTML("beforeend",
-                    `<div data-key="${key}">${key}<button class="kill-button">X</button></div>`
-                )
+        for (const e of list) {
+            weblist.insertAdjacentHTML("beforeend",
+                `<div data-key="${e}">${e}<button class="kill-button">X</button></div>`
+            )
 
-                isEmpty = false
-            }
+            isEmpty = false
         }
 
         if (isEmpty) {
-            list.innerHTML = `<i style="font-size: 14px;">There is nothing here</i>`
+            weblist.innerHTML = `<i style="font-size: 14px;">There is nothing here</i>`
         }
         
         document.querySelectorAll(".kill-button").forEach(button => {
@@ -55,10 +53,10 @@ function addToFilter(input) {
             let list = result["block-list"]
 
             if (!list) {
-                list = {}
+                list = []
             }
 
-            list[input] = true
+            list.push(input)
 
             browser.storage.local.set({"block-list": list}).then(() => {
                 loadList()
@@ -74,7 +72,10 @@ function removeFromFilter(input) {
         browser.storage.local.get("block-list").then(result => {
             let list = result["block-list"]
 
-            delete list[input]
+            let idx = list.indexOf(input)
+            if (idx > -1) {
+                list.splice(idx, 1)
+            }
 
             browser.storage.local.set({"block-list": list}).then(() => {
                 loadList()
