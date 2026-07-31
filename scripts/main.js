@@ -23,7 +23,7 @@ const block_css = `
 
 let block
 
-function blockout() {
+function blockout_check() {
     browser.storage.local.get("block-list").then(result => {
     
     let list = result["block-list"]
@@ -60,8 +60,8 @@ function blockout() {
 }
 
 
-blockout()
+blockout_check()
 
 browser.runtime.onMessage.addListener((msg, sender) => {
-    blockout()
+    blockout_check()
 })
