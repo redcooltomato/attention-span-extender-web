@@ -11,9 +11,9 @@ Despite the abudance of similiar plugins, I made this one to be as minimalistic 
 ## Plans
 - [x] Basic usage (disabling selected domains)
 - [x] Better page blocking
-- [ ] Allow blocking specific pages (paths) instead of just domains
-- [ ] Password system?
-- [x] Publish on firefox addon store (24.03.26)
+- [x] Allow blocking specific pages (paths) instead of just domains
+- [ ] Captchas/something annoying?
+- [x] Publish on firefox addon store
 - [ ] Custom block screens?
 - [ ] Chrome support
 - [ ] Publish on chrome(ish) addon store(s)
